@@ -4,12 +4,6 @@
     <title>Nhựt Khang Web</title>
 </head>
 <body>
-    <?php
-        for ($i=0; $i < 4; $i++) {
-            ?>
-            <div>Test php</div>
-            <?php
-        }
-    ?>
+<?php include_once("module/mod_header/mod_header.php"); ?>
 </body>
 </html>
