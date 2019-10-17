@@ -1,7 +1,6 @@
 <?php
 include_once('resources/init.php');
-//$posts = (isset($_GET['id'])) ? get_posts($_GET['id']) : get_posts();
-$posts = get_posts((isset($_GET['id']))? $_GET['id'] : null); 
+$posts = get_posts(null,$_GET['id']);
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
@@ -62,22 +61,7 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
 	   	<div class="row">    		            
 
 			   	<ul id="nav" class="nav">
-			      	<li class="current"><a href="index.php">Home</a></li>
-			      	<!--<li class="has-children"><a href="#">Dropdown</a>
-	                  <ul>
-	                     <li><a href="#">Submenu 01</a></li>
-	                     <li><a href="#">Submenu 02</a></li>
-	                     <li><a href="#">Submenu 03</a></li>
-	                  </ul>
-	               </li>
-	               <li><a href="demo.html">Demo</a></li>	
-	               <li><a href="archives.html">Archives</a></li>
-			      	<li class="has-children"><a href="single.html">Blog</a>
-							<ul>
-	                     <li><a href="blog.html">Blog Entries</a></li>
-	                     <li><a href="single.html">Single Blog</a></li>	                     
-	                  </ul>
-			      	</li>	-->	      	
+			      	<li class="current"><a href="index.php">Home</a></li>    	
 			      	<li><a href="page.html">About</a></li>
 			   	</ul> <!-- end #nav -->			   	 
 
@@ -96,35 +80,40 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
    		<div id="main" class="eight columns">
 
 	   		<article class="entry">
-		<?php
-     foreach($posts as $post){
-      ?>
 					<header class="entry-header">
+	    <?php
+     foreach($posts as $post){
 
+     ?>
 						<h2 class="entry-title">
-							<h2><a href='index.php?id=<?php echo $post['post_id']; ?>' ><?php echo $post['title']; ?></a></h2>
+							<h2>Category</h2><br/>
 						</h2> 				 
 					
 						<div class="entry-meta">
-							<ul>
-								<li> <?php echo date('d-m-y h:i:s',strtotime($post['date_posted'])); ?></li>
-								<span class="meta-sep">&bull;</span>								
-								<li><a href="#" title="" rel="category tag">In <a href='category.php?id=<?php echo $post['category_id']; ?>' ><?php echo "<font color='green'>".$post['name']."</font>"; ?></a></li>
-								<span class="meta-sep">&bull;</span>
-								<li><!-- Blogger user--></li>
-							</ul>
+	     <h2><a href='index.php?id=<?php echo $post['post_id']; ?>' ><?php echo $post['title']; ?></a></h2>
+     <p>
+        Posted on <?php echo date('d-m-y h:i:s',strtotime($post['date_posted'])); ?>
+        In <a href='category.php?id=<?php echo $post['category_id']; ?>' ><?php echo $post['name']; ?></a>
+     </p>
+     <div><?php echo nl2br($post['contents']); ?></div>
+     <menu>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+     </menu>
 						</div> 
 					 
 					</header> 
 	
 					
 					<div class="entry-content">
-						<p><?php echo nl2br($post['contents']); ?></p>
+						<p><!--insert here--></p>
 					</div> 
-									 <?php   
+
+    <?php   
      }
      ?>
-
 				</article> <!-- end entry -->
 
    		</div> <!-- end main -->
@@ -158,18 +147,6 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
 				<p>"Success is not final; failure is not fatal: It is the courage to continue that counts." - Winston S. Churchill</p>
 
    			</div>
-
-
-           <!-- <div class="widget widget_popular">
-               <h3>Popular Post.</h3>
-
-               <ul class="link-list">
-                  <li><a href="#">insert here</a></li>
-                  <li><a href="#">insert here</a></li>
-                  <li><a href="#">insert here</a></li>                     
-               </ul>
-                  
-            </div> -->
    			
    		</div> <!-- end sidebar -->
 
@@ -184,57 +161,7 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
 
       <div class="row"> 
 
-      	<!--<div class="twelve columns">	
-				<ul class="social-links">
-               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>               
-               <li><a href="#"><i class="fa fa-github-square"></i></a></li>
-               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-flickr"></i></a></li>               
-               <li><a href="#"><i class="fa fa-skype"></i></a></li>
-            </ul>			
-      	</div> -->
-      <!--
-         <div class="six columns info">
-
-            <h3>About The Blog</h3> 
-
-            <p>Just Keep it Simple!
-            </p>
-
-         </div> -->
-
-        <!-- <div class="four columns">
-
-            <h3>Photostream</h3>
-            
-            <ul class="photostream group">
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-               <li><a href="#"><img alt="thumbnail" src="images/thumb.jpg"></a></li>
-            </ul>           
-
-         </div> -->
-
-       <!--  <div class="two columns">
-            <h3 class="social">Navigate</h3>
-
-            <ul class="navigate group">
-               <li><a href="#">Home</a></li>
-               <li><a href="#">Blog</a></li>
-               <li><a href="#">Demo</a></li>
-               <li><a href="#">Archives</a></li>
-               <li><a href="#">About</a></li>
-            </ul>
-         </div> -->
-
-         <p class="copyright">&copy; Copyright 2018. The Blog. &nbsp; Brought To You by <a title="CodeProjects" href="https://code-projects.org/">Code-Projects</a>.</p>
+         <p class="copyright">&copy; Copyright 2018. The Blog. &nbsp; </a></p>
         
       </div> <!-- End row -->
 
