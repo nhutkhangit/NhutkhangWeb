@@ -22,5 +22,7 @@ function load_data()
 }
 $arrs=load_data();
 var_dump($arrs);
+
+echo 'abcxyz';
 ?>
 
