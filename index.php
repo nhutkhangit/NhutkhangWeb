@@ -4,6 +4,6 @@
     <title>Nhựt Khang Web</title>
 </head>
 <body>
-<?php include_once("module/mod_header/mod_header.php"); ?>
+ <?php include_once("Module/mod_header/mod_header.php"); ?>
 </body>
 </html>
