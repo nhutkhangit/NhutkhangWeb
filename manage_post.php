@@ -35,6 +35,13 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
 	================================================== -->
 	<link rel="shortcut icon" href="favicon.png" >
 
+	<script type="text/javascript">
+function confirm_delete()
+{
+return confirm("Are you sure you want to delete this record?");
+}
+</script>
+
 </head>
 
 <body>
@@ -109,9 +116,10 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
 							<ul>
 								<li> <?php echo date('d-m-y h:i:s',strtotime($post['date_posted'])); ?></li>
 								<span class="meta-sep">&bull;</span>								
-								<li><a href="#" title="" rel="category tag">In <a href='category.php?id=<?php echo $post['category_id']; ?>' ><?php echo "<font color='green'>".$post['name']."</font>"; ?></a></li>
+								<li><a href="#" title="" rel="category tag">In <a href='manage_category.php?id=<?php echo $post['category_id']; ?>' ><?php echo "<font color='green'>".$post['name']."</font>"; ?></a></li>
 								<span class="meta-sep">&bull;</span>
-								<li><!-- Blogger user--></li>
+								<li><a href='delete_post.php?id=<?php echo $post['post_id']; ?>' onclick='return confirm_delete()'><font color="red">Delete This Post</font></a></li>&nbsp;||
+								<li><a href='edit_post.php?id=<?php echo $post['post_id']; ?>' ><font color="blue">Edit This Post</font></a></li>
 							</ul>
 						</div> 
 					 
@@ -146,7 +154,7 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
    				<?php
      foreach(get_categories() as $category){
      ?>
-      <p><a href="category.php?id=<?php echo $category['id'];?>"><?php echo $category['name']; ?></a>
+      <p><a href="manage_category.php?id=<?php echo $category['id'];?>"><?php echo $category['name']; ?></a>
      <?php  
      }
      ?>
@@ -234,7 +242,7 @@ $posts = get_posts((isset($_GET['id']))? $_GET['id'] : null);
             </ul>
          </div> -->
 
-         <p class="copyright">&copy; Copyright 2018. The Blog. &nbsp; Brought To You by <a title="CodeProjects" href="https://code-projects.org/">Code-Projects</a>.</p>
+         <p class="copyright">&copy; Copyright 2018. The Blog. &nbsp; </a>.</p>
         
       </div> <!-- End row -->
 
